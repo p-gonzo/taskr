@@ -1,0 +1,49 @@
+body{
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  background-image: url("/img/cork_board.jpg");
+}
+.complete {
+  color: grey;
+  text-decoration: line-through;
+}
+
+.task {
+  list-style-type: none;
+  font-size: 1.5em;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+  font-size: 2em;
+  max-width: 100%;
+  min-width: 100%;
+  text-align: center;
+}
+
+ul {
+  background-color: rgba( 255, 255, 255, .5);
+  border-radius: 0.75em;
+  color: black;
+}
+
+.pad {
+  width: 25%;
+  max-width: 220px;
+  height: 100%;
+  min-height: 6.5em;
+  margin: 10%;
+
+  background-color:skyblue;
+  color: white;
+
+  border-radius: 0.75em;
+  padding: 4%;
+
+  box-shadow:  6px -1px 6px rgb(204,204,204);
+
+  over
+
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+};
