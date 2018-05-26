@@ -1,8 +1,11 @@
 var taskModels = require('../models/taskModels.js');
+var url = require('url');
 
 module.exports = {
   get: (req, res) => {
-    taskModels.getTasks()
+    var url_parts = url.parse(req.url, true);
+    var query = url_parts.query;
+    taskModels.getTasks(query.padId)
       .then ((data) => {
         res.send(data);
       })
@@ -12,7 +15,8 @@ module.exports = {
   },
 
   post: (req, res) => {
-    taskModels.saveTask(req.body.text)
+    console.log(req.body);
+    taskModels.saveTask(req.body.text, req.body.padId)
       .then ((data) => {
         res.send(data);
       })

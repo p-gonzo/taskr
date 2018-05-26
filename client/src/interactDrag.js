@@ -1,11 +1,12 @@
 import interact from 'interactjs';
+import axios from 'axios';
+
+
 
 // target elements with the "draggable" class
 interact('.draggable')
   .draggable({
-    // enable inertial throwing
     //inertia: true,
-    // keep the element within the area of it's parent
     restrict: {
       //restriction: "parent",
       endOnly: true,
@@ -13,13 +14,14 @@ interact('.draggable')
     },
     // enable autoScroll
     autoScroll: true,
-
-    // call this function on every dragmove event
     onmove: dragMoveListener,
-    // call this function on every dragend event
     onend: function (event) {
       //send the x/y position to a database
-      console.log(event.target.dataset.x);
+      axios.patch('/pads', event.target.dataset)
+        .then(() => {
+      console.log('pad info sent');
+    });
+ 
     },
     ignoreFrom: '.task',
   });

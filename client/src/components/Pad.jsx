@@ -1,34 +1,60 @@
 import React from 'react';
 import Contents from './Contents.jsx';
+import PadInput from './PadInput.jsx';
+import axios from 'axios';
 
 class Pad extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
-      padId: null,
       tasks: [],
       userInput: ''
     }
+    this.getTasks = this.getTasks.bind(this)
+    this.handleTaskClick = this.handleTaskClick.bind(this);
   }
 
   componentDidMount() {
-    //get tasks based on pad ID
+    //console.log(this.props);
+    this.getTasks();
+  }
+
+  getTasks() {
+    return axios.get('/tasks', {
+      params: {
+        padId: this.props.id,
+      },
+    })
+      .then((resp) => {
+        this.setState({
+          tasks: resp.data
+        })
+      })
+  }
+
+  handleTaskClick(task) {
+    axios.patch('/tasks', task)
+    .then(() => {
+      return this.getTasks();
+    });
   }
 
   render() {
+
+    var padStyle = {
+      backgroundColor: this.props.color,
+      transform:'translate(' + this.props.posX + 'px, ' + this.props.posY + 'px)',
+    };
+
     return (
-      <div className= 'pad draggable'>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            value={this.state.userInput}
-            placeholder="Add an item"
-            onChange={(e) => {
-              this.setState({userInput: e.target.value})
-            }}
-          />
-        </form>
+      <div 
+        className= 'pad draggable'
+        data-padid = {this.props.id}
+        style = {padStyle}
+        data-x = {this.props.posX}
+        data-y = {this.props.posY}
+      >
+        <PadInput id={this.props.id} getTasks={this.getTasks} />
         <Contents todos={this.state.tasks} handleTaskClick={this.handleTaskClick}/>
       </div>
     )

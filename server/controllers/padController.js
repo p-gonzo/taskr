@@ -12,7 +12,7 @@ module.exports = {
   },
 
   post: (req, res) => {
-    padModels.createPad()
+    padModels.createPad(req.body.color)
       .then ((data) => {
         res.send(data);
       })
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   patch: (req, res) => {
-    padModels.updatePad(req.body)
+    padModels.updatePad(req.body.padid, req.body.x, req.body.y)
       .then ((data) => {
         res.send(data);
       })

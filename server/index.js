@@ -14,6 +14,7 @@ var app = express();
 app.use(util.requestLogger);
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(parser.json());
+app.use(parser.urlencoded())
 
 // define routes:
 app.use('/tasks', taskRouter);

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 let taskSchema = mongoose.Schema({
   owner: {type: Number, default: 0 },
-  pad: {type: Number, default: 0},
+  pad: {type: String, default: '0'},
   content: String,
   is_done: {type: String, default: 'false'},
 });
@@ -11,12 +11,13 @@ let Task = mongoose.model('Task', taskSchema);
 
 
 //returns a promise
-let saveTask = (string) => {
-  return Task.create({content: string})
+let saveTask = (text, padId) => {
+  return Task.create({content: text, pad: padId})
 };
 
-let getTasks = (pad) => {
-  return Task.find({})
+let getTasks = (padId) => {
+  //console.log(padId);
+  return Task.find({pad: padId})
           //.sort('is_done');
 };
 

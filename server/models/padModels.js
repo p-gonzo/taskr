@@ -12,7 +12,7 @@ let Pad = mongoose.model('Pad', padSchema);
 
 //returns a promise
 let createPad = (string) => {
-  return Pad.create({})
+  return Pad.create({color: string})
 };
 
 let getPads = () => {
@@ -20,11 +20,8 @@ let getPads = () => {
           //.sort('is_done');
 };
 
-let updatePad = (pad) => {
-  console.log(pad);
- 
-  //update this.
-  return Pad.update({ _id: taskId }, { $set: { is_done: isDone }});
+let updatePad = (padId, x, y) => {
+  return Pad.update({ _id: padId }, { $set: { pos_x: x, pos_y: y }});
 };
 
 module.exports.createPad = createPad;
