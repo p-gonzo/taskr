@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 let taskSchema = mongoose.Schema({
-  owner: {type: Number, default: 0 },
   pad: {type: String, default: '0'},
   content: String,
   is_done: {type: String, default: 'false'},

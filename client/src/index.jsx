@@ -62,6 +62,7 @@ class App extends React.Component{
         return (
           <Pad
             id = {pad._id}
+            key ={pad._id}
             posX = {pad.pos_x}
             posY = {pad.pos_y}
             color = {pad.color}

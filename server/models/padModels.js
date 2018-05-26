@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Task = require('./taskModels').Task;
 
 let padSchema = mongoose.Schema({
-  owner: {type: Number, default: 0 },
+  owner: {type: String, default: '' },
   color: {type: String, default: 'blue'},
   pos_x: {type: Number, default: 100 },
   pos_y: {type: Number, default: 100 },
