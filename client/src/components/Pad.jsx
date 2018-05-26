@@ -54,6 +54,7 @@ class Pad extends React.Component {
         data-x = {this.props.posX}
         data-y = {this.props.posY}
       >
+        <button className='close-pad'>X</button>
         <PadInput id={this.props.id} getTasks={this.getTasks} />
         <Contents todos={this.state.tasks} handleTaskClick={this.handleTaskClick}/>
       </div>

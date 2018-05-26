@@ -48,10 +48,9 @@ ul {
 }
 
 .pad {
-  width: 25%;
- 
+  width: 50%;
+  max-width: 300px;
   min-height: 6.5em;
-  margin: 1%;
 
   background-color:skyblue;
   color: white;
@@ -59,12 +58,13 @@ ul {
   position: absolute;
 
   border-radius: 0.75em;
-  padding: 2%;
+  padding: 1% 2% 2% 2%;
 
   box-shadow:  6px -1px 6px rgba(0, 0, 0, .5);
 
-  over
+}
 
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-};
+.close-pad{
+  float: right;
+  margin-bottom: .8em;
+}
