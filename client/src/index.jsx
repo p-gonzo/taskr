@@ -1,77 +1,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Pad from './components/Pad.jsx'
-import axios from 'axios';
-import interact from './interactDrag.js'
+import Board from './components/Board.jsx';
+import Login from './components/Login.jsx';
+import Signup from './components/Signup.jsx'
+
 
 class App extends React.Component{
   constructor(props) {
     super(props)
     this.state = {
-      pads: [],
+      userName: '',
+      signup: false,
     }
-    this.addPad = this.addPad.bind(this);
-    this.getPadsAndSetState = this.getPadsAndSetState.bind(this);
-    this.deletePad = this.deletePad.bind(this);
+    this.toggleSignup = this.toggleSignup.bind(this);
   }
 
-  componentDidMount(){
-    this.getPadsAndSetState()
-  }
-
-  getPadsAndSetState() {
-    axios.get('/pads')
-      .then((resp) => {
-        this.setState({
-          pads: resp.data
-        })
-      });
-  }
-
-  addPad() {
-    var color = prompt('Choose a Color!');
-    axios.post('/pads', {
-      color: color,
+  toggleSignup() {
+    this.setState({
+      signup: !this.state.signup,
     })
-      .then ((resp) => {
-        this.getPadsAndSetState();
-      });
-  }
-
-  deletePad(id) {
-    axios.delete('/pads', {
-      params: {
-        padId: id
-      }, 
-    })
-    .then((resp) => {
-      this.getPadsAndSetState();
-    })
-  }
-
+  };
 
   render() {
-    return (
-      <div id = 'draggable-area'>
-      <h1 id = 'title'>Task.r</h1>
-      <button 
-        id = 'new-pad'
-        onClick = {this.addPad}
-      >+ Pad</button>
-      {this.state.pads.map((pad) => {
+    if (this.state.userName === '') {
+      if (this.state.signup === false) {
         return (
-          <Pad
-            id = {pad._id}
-            key ={pad._id}
-            posX = {pad.pos_x}
-            posY = {pad.pos_y}
-            color = {pad.color}
-            deletePad = {this.deletePad}
-          />
-        );
-      })}
-      </div>
-    )
+          <div>
+            <Login toggleSignup={this.toggleSignup}/>
+          </div>
+        )
+      } else {
+        return (
+          <div>
+            <Signup toggleSignup={this.toggleSignup}/>
+          </div>
+        )
+      }
+    }
   }
 }
 

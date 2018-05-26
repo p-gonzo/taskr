@@ -29,7 +29,8 @@ class PadInput extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
+          <input 
+            className='pad-input'
             type="text"
             value={this.state.userInput}
             placeholder="Add an item"

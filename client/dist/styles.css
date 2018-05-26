@@ -7,6 +7,20 @@ body{
   float: left;
   margin: 0;
 }
+#login-title{
+  text-align: center;
+}
+#form-wrapper{
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  max-width: 300px;
+  background-color: skyblue;
+  padding: 2% 5% 5% 5%;
+  box-shadow:  6px 1px 6px rgba(0, 0, 0, .5);
+  border-radius: 10px;
+
+}
 
 #new-pad{
   float: right;
@@ -30,7 +44,7 @@ body{
   font-size: 1.5em;
 }
 
-input {
+.pad-input, .login-input {
   display: block;
   margin: 0 auto;
   font-size: 2em;
@@ -38,6 +52,10 @@ input {
   min-width: 100%;
   text-align: center;
   border-radius: 5px;
+}
+
+.login-input {
+  margin-top: 10px;
 }
 
 ul {
@@ -73,6 +91,20 @@ ul {
   box-shadow:  3px 1px 3px rgba(0, 0, 0, .5);
   font-weight: bold;
   border: 0px;
+}
+
+.toggle-signup {
+  font-size: 1.5em;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+  margin-top: 1em;
+  box-shadow:  3px 1px 3px rgba(0, 0, 0, .5);
+  border: 0px;
+}
+
+.toggle-signup:hover {
+  background-color: rgb(255, 199, 94)
 }
 
 .close-pad:hover{
