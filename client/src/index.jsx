@@ -13,6 +13,7 @@ class App extends React.Component{
       signup: false,
     }
     this.toggleSignup = this.toggleSignup.bind(this);
+    this.setUser = this.setUser.bind(this);
   }
 
   toggleSignup() {
@@ -21,12 +22,18 @@ class App extends React.Component{
     })
   };
 
+  setUser(string) {
+    this.setState({
+      userName: string,
+    })
+  }
+
   render() {
     if (this.state.userName === '') {
       if (this.state.signup === false) {
         return (
           <div>
-            <Login toggleSignup={this.toggleSignup}/>
+            <Login toggleSignup={this.toggleSignup} setUser={this.setUser}/>
           </div>
         )
       } else {
@@ -36,6 +43,8 @@ class App extends React.Component{
           </div>
         )
       }
+    } else {
+      return <div> <Board userName = {this.state.userName} /> </div>
     }
   }
 }

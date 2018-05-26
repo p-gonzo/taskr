@@ -13,17 +13,8 @@ class Login extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log('adsf');
-    e.preventDefault()
-    axios.post('/login', {
-      text: this.state.userName,
-      padId: this.state.password,
-    }).then(() => {
-      this.setState({
-      //update this.
-      })
-      //update this.
-    })
+    e.preventDefault();
+    this.props.setUser(this.state.userName);
   }
 
   render() {

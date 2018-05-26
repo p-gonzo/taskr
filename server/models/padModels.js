@@ -12,12 +12,13 @@ let Pad = mongoose.model('Pad', padSchema);
 
 
 //returns a promise
-let createPad = (string) => {
-  return Pad.create({color: string})
+let createPad = (string, userName) => {
+  return Pad.create({color: string, owner: userName})
 };
 
-let getPads = () => {
-  return Pad.find({})
+let getPads = (userName) => {
+  console.log(userName);
+  return Pad.find({owner: userName})
           //.sort('is_done');
 };
 

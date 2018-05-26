@@ -3,7 +3,11 @@ var url = require('url');
 
 module.exports = {
   get: (req, res) => {
-    padModels.getPads()
+
+    var url_parts = url.parse(req.url, true);
+    var query = url_parts.query;
+
+    padModels.getPads(query.user)
       .then ((data) => {
         res.send(data);
       })
@@ -13,7 +17,8 @@ module.exports = {
   },
 
   post: (req, res) => {
-    padModels.createPad(req.body.color)
+    console.log(req.body);
+    padModels.createPad(req.body.color, req.body.user)
       .then ((data) => {
         res.send(data);
       })

@@ -5,6 +5,7 @@ import interact from '../interactDrag.js'
 
 class Board extends React.Component{
   constructor(props) {
+    console.log(props);
     super(props)
     this.state = {
       pads: [],
@@ -19,7 +20,11 @@ class Board extends React.Component{
   }
 
   getPadsAndSetState() {
-    axios.get('/pads')
+    axios.get('/pads' , {
+      params: {
+        user: this.props.userName,
+      },
+    })
       .then((resp) => {
         this.setState({
           pads: resp.data
@@ -30,6 +35,7 @@ class Board extends React.Component{
   addPad() {
     var color = prompt('Choose a Color!');
     axios.post('/pads', {
+      user: this.props.userName,
       color: color,
     })
       .then ((resp) => {
