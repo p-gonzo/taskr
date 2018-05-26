@@ -37,3 +37,4 @@ let toggleDone = (task) => {
 module.exports.saveTask = saveTask;
 module.exports.getTasks = getTasks;
 module.exports.toggleDone = toggleDone;
+module.exports.Task = Task;

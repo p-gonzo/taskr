@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Task = require('./taskModels').Task;
 
 let padSchema = mongoose.Schema({
   owner: {type: Number, default: 0 },
@@ -24,6 +25,16 @@ let updatePad = (padId, x, y) => {
   return Pad.update({ _id: padId }, { $set: { pos_x: x, pos_y: y }});
 };
 
+let deletePad = (padId) => {
+
+  return Task.deleteMany({pad: padId})
+    .then(() => {
+      return Pad.findByIdAndDelete(padId)
+    });
+
+}
+
 module.exports.createPad = createPad;
 module.exports.getPads = getPads;
 module.exports.updatePad = updatePad;
+module.exports.deletePad = deletePad;

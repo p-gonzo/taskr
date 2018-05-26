@@ -11,7 +11,8 @@ class App extends React.Component{
       pads: [],
     }
     this.addPad = this.addPad.bind(this);
-    this.getPadsAndSetState = this.getPadsAndSetState.bind(this)
+    this.getPadsAndSetState = this.getPadsAndSetState.bind(this);
+    this.deletePad = this.deletePad.bind(this);
   }
 
   componentDidMount(){
@@ -37,6 +38,17 @@ class App extends React.Component{
       });
   }
 
+  deletePad(id) {
+    axios.delete('/pads', {
+      params: {
+        padId: id
+      }, 
+    })
+    .then((resp) => {
+      this.getPadsAndSetState();
+    })
+  }
+
 
   render() {
     return (
@@ -53,6 +65,7 @@ class App extends React.Component{
             posX = {pad.pos_x}
             posY = {pad.pos_y}
             color = {pad.color}
+            deletePad = {this.deletePad}
           />
         );
       })}

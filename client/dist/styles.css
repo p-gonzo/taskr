@@ -13,6 +13,7 @@ body{
   font-size: 2em;
   font-weight: 500;
   border-radius: 10px;
+  box-shadow:  6px 1px 6px rgba(0, 0, 0, .5);
 
 }
 
@@ -44,7 +45,7 @@ ul {
   border-radius: 0.75em;
   color: black;
   word-wrap: break-word;
-  box-shadow:  6px -1px 6px rgba(0, 0, 0, .5);
+  box-shadow:  6px 1px 6px rgba(0, 0, 0, .5);
 }
 
 .pad {
@@ -60,11 +61,20 @@ ul {
   border-radius: 0.75em;
   padding: 1% 2% 2% 2%;
 
-  box-shadow:  6px -1px 6px rgba(0, 0, 0, .5);
+  box-shadow:  6px 1px 6px rgba(0, 0, 0, .5);
 
 }
 
 .close-pad{
+  font-size: 1em;
   float: right;
   margin-bottom: .8em;
+  border-radius: 30%;
+  box-shadow:  3px 1px 3px rgba(0, 0, 0, .5);
+  font-weight: bold;
+  border: 0px;
+}
+
+.close-pad:hover{
+  background-color: rgba(255, 0, 0);
 }
