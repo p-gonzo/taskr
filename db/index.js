@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/taskr');
+var databasePath = process.env.DATABASE_PATH || 'mongodb://localhost/taskr';
+mongoose.connect(databasePath);
 
 var db = mongoose.connection;
 
