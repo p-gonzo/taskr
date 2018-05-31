@@ -13,7 +13,7 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    axios.post('/signup', {
+    axios.post('/users', {
       text: this.state.userName,
       padId: this.state.password,
     }).then(() => {

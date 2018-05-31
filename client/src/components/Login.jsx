@@ -3,7 +3,6 @@ import axios from 'axios';
 
 class Login extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       userName: '',
@@ -14,7 +13,13 @@ class Login extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.setUser(this.state.userName);
+    axios.post('/users', {
+      text: this.state.userName,
+      password: this.state.password,
+    }).then((res) => {
+      console.log(res);
+      this.props.setUser(this.state.userName);
+    });
   }
 
   render() {

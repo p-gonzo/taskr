@@ -4,7 +4,6 @@ import axios from 'axios';
 class PadInput extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
       userInput: ''
     }

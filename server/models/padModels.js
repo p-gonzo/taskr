@@ -17,7 +17,6 @@ let createPad = (string, userName) => {
 };
 
 let getPads = (userName) => {
-  console.log(userName);
   return Pad.find({owner: userName})
           //.sort('is_done');
 };

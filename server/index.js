@@ -4,6 +4,8 @@ var parser = require('body-parser');
 
 const taskRouter = require('./routes/taskRoutes.js');
 const padRouter = require('./routes/padRouts.js');
+const userRouter = require('./routes/userRouts.js');
+
 const util = require('./utilities.js');
 const db = require('../db/index.js');
 
@@ -19,6 +21,7 @@ app.use(parser.urlencoded())
 // define routes:
 app.use('/tasks', taskRouter);
 app.use('/pads', padRouter);
+app.use('/users', userRouter);
 
 var port = process.env.PORT || 9000; 
 
