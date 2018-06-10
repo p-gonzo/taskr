@@ -14,7 +14,6 @@ var app = express();
 
 // attach plugins
 app.use(util.requestLogger);
-app.use(express.static(__dirname + '/../client/dist'));
 app.use(parser.json());
 app.use(parser.urlencoded())
 
@@ -22,6 +21,14 @@ app.use(parser.urlencoded())
 app.use('/tasks', taskRouter);
 app.use('/pads', padRouter);
 app.use('/users', userRouter);
+
+//auth middleware --
+// if they're authenticated, send them to dashboard -- otherwise,
+//send them to login.
+
+
+
+app.use('/dashboard', express.static(__dirname + '/../client/dist'));
 
 var port = process.env.PORT || 9000; 
 
