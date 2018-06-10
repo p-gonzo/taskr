@@ -50,10 +50,6 @@ class Login extends React.Component {
           />
           <input type ='submit' hidden></input>
         </form>
-        <button 
-          className='toggle-signup'
-          onClick={this.props.toggleSignup}
-        >Sign up now!</button>
         </div>
       </div>
     )

@@ -1,11 +1,13 @@
 import React from 'react';
 import Board from './Board.jsx';
 import Login from './Login.jsx';
+import { Route, withRouter } from "react-router-dom";
 
 
 class App extends React.Component{
   constructor(props) {
     super(props)
+    this.props.history.push('/login');
     this.state = {
       userName: '',
     }
@@ -16,19 +18,29 @@ class App extends React.Component{
     this.setState({
       userName: string,
     })
+    this.props.history.push('/dashboard');
   }
 
   render() {
-    if (this.state.userName === '') {
-        return (
-          <div>
-            <Login setUser={this.setUser}/>
-          </div>
-        )
-    } else {
-      return <div> <Board userName = {this.state.userName} /> </div>
-    }
+    return (
+      <div>
+        <Route path = '/dashboard' 
+          render = { (props) => 
+            <Board {...props}
+          userName = {this.state.userName}
+            />
+          }
+        />
+        <Route path = '/login' 
+          render = { (props) => 
+            <Login {...props}
+            setUser={this.setUser}
+            />
+          }
+        />
+      </div>
+    )
   }
 }
 
-export default App;
+export default withRouter(App);

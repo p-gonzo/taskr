@@ -28,7 +28,7 @@ app.use('/users', userRouter);
 
 
 
-app.use('/dashboard', express.static(__dirname + '/../client/dist'));
+app.use('/', express.static(__dirname + '/../client/dist'));
 
 var port = process.env.PORT || 9000; 
 
