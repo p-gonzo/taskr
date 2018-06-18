@@ -66,16 +66,15 @@ class Board extends React.Component{
         id = 'new-pad'
         onClick = {this.addPad}
       >+ Pad</button>
-      <div 
-        id = 'user-info-wrapper'
-        onMouseEnter={() => this.setState({displayLogout: true})}
-        onMouseLeave={() => this.setState({displayLogout: false})}
-        onClick={() => this.handleLogout()}
-      >
-      <div id='user-info'>
-      <img id = 'user-avatar' src ={this.props.avatar} />
-      <h2 id = 'user-name'>{this.state.displayLogout ? 'Logout?' : this.props.userName}</h2>
-      </div>
+      <div id = 'user-info-wrapper'>
+        <div id='user-info'
+          onMouseEnter={() => this.setState({displayLogout: true})}
+          onMouseLeave={() => this.setState({displayLogout: false})}
+          onClick={() => this.handleLogout()}
+        >
+          <img id = 'user-avatar' src ={this.props.avatar} />
+          <h2 id = 'user-name'>{this.state.displayLogout ? 'Logout?' : this.props.userName}</h2>
+        </div>
       </div>
       {this.state.pads.map((pad) => {
         return (
