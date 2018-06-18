@@ -27,33 +27,8 @@ class Login extends React.Component {
     return (
       <div>
         <h1>Task.r</h1>
-        <div id='form-wrapper' className='draggable'>
-        <form onSubmit={this.handleSubmit}>
-        <h2 id='login-title'>Login to get started:</h2>
-          <input
-            className='login-input'
-            type="text"
-            value={this.state.userName}
-            placeholder="Username"
-            onChange={(e) => {
-              this.setState({userName: e.target.value})
-            }}
-          />
-          <input
-            className='login-input'
-            type="password"
-            value={this.state.password}
-            placeholder="Password"
-            onChange={(e) => {
-              this.setState({password: e.target.value})
-            }}
-          />
-          <input type ='submit' hidden></input>
-        </form>
-        <button 
-          className='toggle-signup'
-          onClick={this.props.toggleSignup}
-        >Sign up now!</button>
+        <div id='login-wrapper' className='draggable'>
+        <a href="/auth/google"><img src='../../img/btn_google.png' /></a>
         </div>
       </div>
     )

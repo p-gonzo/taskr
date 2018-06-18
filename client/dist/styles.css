@@ -1,6 +1,6 @@
 body{
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  background-image: url("/img/cork_board.jpg");
+  background-image: url("img/cork_board.jpg");
 }
 
 #title{
@@ -10,17 +10,21 @@ body{
 #login-title{
   text-align: center;
 }
-#form-wrapper{
+#login-wrapper{
   display: block;
   margin: 0 auto;
-  width: 50%;
-  max-width: 300px;
+  width: fit-content;
   background-color: skyblue;
-  padding: 2% 5% 5% 5%;
+  padding: 1%;
   box-shadow:  6px 1px 6px rgba(0, 0, 0, .5);
   border-radius: 10px;
-
 }
+
+#login-wrapper a {
+  text-align: center;
+  display: block;
+}
+
 
 #new-pad{
   float: right;
@@ -110,3 +114,35 @@ ul {
 .close-pad:hover{
   background-color: rgba(255, 0, 0);
 }
+
+#user-info-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#user-info{
+  background-color: rgba( 255, 255, 255, .6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+#user-info:hover{
+  background-color: rgba( 255, 0, 0, .6);
+  cursor: pointer;
+}
+
+#user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  flex-shrink: 0;
+  margin-left: 15px;
+}
+
+#user-name {
+  padding: 0 15px;
+}
+

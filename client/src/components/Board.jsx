@@ -8,10 +8,12 @@ class Board extends React.Component{
     super(props)
     this.state = {
       pads: [],
+      displayLogout: false,
     }
     this.addPad = this.addPad.bind(this);
     this.getPadsAndSetState = this.getPadsAndSetState.bind(this);
     this.deletePad = this.deletePad.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount(){
@@ -19,11 +21,7 @@ class Board extends React.Component{
   }
 
   getPadsAndSetState() {
-    axios.get('/pads' , {
-      params: {
-        user: this.props.userName,
-      },
-    })
+    axios.get('/pads')
       .then((resp) => {
         this.setState({
           pads: resp.data
@@ -34,7 +32,6 @@ class Board extends React.Component{
   addPad() {
     var color = prompt('Choose a Color!');
     axios.post('/pads', {
-      user: this.props.userName,
       color: color,
     })
       .then ((resp) => {
@@ -53,6 +50,13 @@ class Board extends React.Component{
     })
   }
 
+  handleLogout() {
+    axios.get('/logout')
+      .then(() => {
+        window.location.href = "/";
+      })
+  }
+
 
   render() {
     return (
@@ -62,6 +66,16 @@ class Board extends React.Component{
         id = 'new-pad'
         onClick = {this.addPad}
       >+ Pad</button>
+      <div id = 'user-info-wrapper'>
+        <div id='user-info'
+          onMouseEnter={() => this.setState({displayLogout: true})}
+          onMouseLeave={() => this.setState({displayLogout: false})}
+          onClick={() => this.handleLogout()}
+        >
+          <img id = 'user-avatar' src ={this.props.avatar} />
+          <h2 id = 'user-name'>{this.state.displayLogout ? 'Logout?' : this.props.userName}</h2>
+        </div>
+      </div>
       {this.state.pads.map((pad) => {
         return (
           <Pad

@@ -21,7 +21,6 @@ let getTasks = (padId) => {
 };
 
 let toggleDone = (task) => {
-  console.log(task);
   var taskId = task._id;
   var isDone = task.is_done;
   if (isDone === 'true') {
