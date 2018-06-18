@@ -19,7 +19,7 @@ interact('.draggable')
       //send the x/y position to a database
       axios.patch('/pads', event.target.dataset)
         .then(() => {
-      console.log('pad info sent');
+      //console.log('pad info sent');
     });
  
     },
