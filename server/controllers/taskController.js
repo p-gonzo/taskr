@@ -17,7 +17,6 @@ module.exports = {
   },
 
   post: (req, res) => {
-    console.log(req.body);
     taskModels.saveTask(req.body.text, req.body.padId)
       .then ((data) => {
         res.send(data);

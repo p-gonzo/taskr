@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './Board.jsx';
 import Login from './Login.jsx';
+import axios from 'axios';
 import { Route, withRouter } from "react-router-dom";
 
 
@@ -10,15 +11,23 @@ class App extends React.Component{
     this.props.history.push('/login');
     this.state = {
       userName: '',
+      avatar: '',
     }
-    this.setUser = this.setUser.bind(this);
   }
 
-  setUser(string) {
-    this.setState({
-      userName: string,
-    })
-    this.props.history.push('/dashboard');
+  componentDidMount() {
+    axios.post('/users').then((res) => {
+      var user = JSON.parse(res.headers.user);
+      console.log(user);
+      if (user !== undefined) {
+        this.setState({
+          userName: user.display_name,
+          avatar: user.avatar,
+        }, () => this.props.history.push('/dashboard'))
+      } else {
+        this.props.history.push('/login');
+      }
+    });
   }
 
   render() {
@@ -28,13 +37,14 @@ class App extends React.Component{
           render = { (props) => 
             <Board {...props}
           userName = {this.state.userName}
+          avatar = {this.state.avatar}
             />
           }
         />
         <Route path = '/login' 
           render = { (props) => 
             <Login {...props}
-            setUser={this.setUser}
+            successfulLogin={this.successfulLogin}
             />
           }
         />

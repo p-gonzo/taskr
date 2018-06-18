@@ -7,7 +7,7 @@ module.exports = {
     var url_parts = url.parse(req.url, true);
     var query = url_parts.query;
 
-    padModels.getPads(query.user)
+    padModels.getPads(req.user._id)
       .then ((data) => {
         res.send(data);
       })
@@ -17,8 +17,7 @@ module.exports = {
   },
 
   post: (req, res) => {
-    console.log(req.body);
-    padModels.createPad(req.body.color, req.body.user)
+    padModels.createPad(req.body.color, req.user._id)
       .then ((data) => {
         res.send(data);
       })
